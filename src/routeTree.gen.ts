@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssignmentsRouteImport } from './routes/assignments'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as MaterialsRouteImport } from './routes/materials'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SubmissionsRouteImport } from './routes/submissions'
 import { Route as SyllabusRouteImport } from './routes/syllabus'
+import { Route as WorkloadRouteImport } from './routes/workload'
 import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
 
@@ -38,6 +40,11 @@ const MaterialsRoute = MaterialsRouteImport.update({
   path: '/materials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubmissionsRoute = SubmissionsRouteImport.update({
   id: '/submissions',
   path: '/submissions',
@@ -46,6 +53,11 @@ const SubmissionsRoute = SubmissionsRouteImport.update({
 const SyllabusRoute = SyllabusRouteImport.update({
   id: '/syllabus',
   path: '/syllabus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkloadRoute = WorkloadRouteImport.update({
+  id: '/workload',
+  path: '/workload',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesIndexRoute = CoursesIndexRouteImport.update({
@@ -64,8 +76,10 @@ export interface FileRoutesByFullPath {
   '/assignments': typeof AssignmentsRoute
   '/calendar': typeof CalendarRoute
   '/materials': typeof MaterialsRoute
+  '/settings': typeof SettingsRoute
   '/submissions': typeof SubmissionsRoute
   '/syllabus': typeof SyllabusRoute
+  '/workload': typeof WorkloadRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/courses/': typeof CoursesIndexRoute
 }
@@ -74,8 +88,10 @@ export interface FileRoutesByTo {
   '/assignments': typeof AssignmentsRoute
   '/calendar': typeof CalendarRoute
   '/materials': typeof MaterialsRoute
+  '/settings': typeof SettingsRoute
   '/submissions': typeof SubmissionsRoute
   '/syllabus': typeof SyllabusRoute
+  '/workload': typeof WorkloadRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/courses': typeof CoursesIndexRoute
 }
@@ -85,8 +101,10 @@ export interface FileRoutesById {
   '/assignments': typeof AssignmentsRoute
   '/calendar': typeof CalendarRoute
   '/materials': typeof MaterialsRoute
+  '/settings': typeof SettingsRoute
   '/submissions': typeof SubmissionsRoute
   '/syllabus': typeof SyllabusRoute
+  '/workload': typeof WorkloadRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/courses/': typeof CoursesIndexRoute
 }
@@ -97,8 +115,10 @@ export interface FileRouteTypes {
     | '/assignments'
     | '/calendar'
     | '/materials'
+    | '/settings'
     | '/submissions'
     | '/syllabus'
+    | '/workload'
     | '/courses/$courseId'
     | '/courses/'
   fileRoutesByTo: FileRoutesByTo
@@ -107,8 +127,10 @@ export interface FileRouteTypes {
     | '/assignments'
     | '/calendar'
     | '/materials'
+    | '/settings'
     | '/submissions'
     | '/syllabus'
+    | '/workload'
     | '/courses/$courseId'
     | '/courses'
   id:
@@ -117,8 +139,10 @@ export interface FileRouteTypes {
     | '/assignments'
     | '/calendar'
     | '/materials'
+    | '/settings'
     | '/submissions'
     | '/syllabus'
+    | '/workload'
     | '/courses/$courseId'
     | '/courses/'
   fileRoutesById: FileRoutesById
@@ -128,8 +152,10 @@ export interface RootRouteChildren {
   AssignmentsRoute: typeof AssignmentsRoute
   CalendarRoute: typeof CalendarRoute
   MaterialsRoute: typeof MaterialsRoute
+  SettingsRoute: typeof SettingsRoute
   SubmissionsRoute: typeof SubmissionsRoute
   SyllabusRoute: typeof SyllabusRoute
+  WorkloadRoute: typeof WorkloadRoute
   CoursesCourseIdRoute: typeof CoursesCourseIdRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
 }
@@ -164,6 +190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaterialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/submissions': {
       id: '/submissions'
       path: '/submissions'
@@ -176,6 +209,13 @@ declare module '@tanstack/react-router' {
       path: '/syllabus'
       fullPath: '/syllabus'
       preLoaderRoute: typeof SyllabusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workload': {
+      id: '/workload'
+      path: '/workload'
+      fullPath: '/workload'
+      preLoaderRoute: typeof WorkloadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/courses/': {
@@ -200,8 +240,10 @@ const rootRouteChildren: RootRouteChildren = {
   AssignmentsRoute: AssignmentsRoute,
   CalendarRoute: CalendarRoute,
   MaterialsRoute: MaterialsRoute,
+  SettingsRoute: SettingsRoute,
   SubmissionsRoute: SubmissionsRoute,
   SyllabusRoute: SyllabusRoute,
+  WorkloadRoute: WorkloadRoute,
   CoursesCourseIdRoute: CoursesCourseIdRoute,
   CoursesIndexRoute: CoursesIndexRoute,
 }

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
-  addDays, addMonths, addWeeks, eachDayOfInterval, endOfMonth, endOfWeek, format, isSameDay, isSameMonth,
+  addMonths, addWeeks, eachDayOfInterval, endOfMonth, endOfWeek, format, isSameDay, isSameMonth,
   isToday, parseISO, setHours, startOfDay, startOfMonth, startOfWeek,
 } from "date-fns";
 import { ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
@@ -231,4 +231,3 @@ function CreateEventDialog({ at, onClose, courses }: { at: Date | null; onClose:
   );
 }
 
-export { addDays };

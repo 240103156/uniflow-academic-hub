@@ -91,7 +91,7 @@ function CalendarPage() {
             <Button size="sm" variant="outline" onClick={() => setCursor(new Date())}>Today</Button>
           </div>
           <h2 className="ml-2 text-sm font-semibold">
-            {view === "month" ? format(cursor, "MMMM yyyy") : `${format(days[0], "MMM d")} – ${format(days[6], "MMM d, yyyy")}`}
+            {view === "month" ? format(cursor, "MMMM yyyy") : `${format(days[0]!, "MMM d")} – ${format(days[6]!, "MMM d, yyyy")}`}
           </h2>
           <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v as View)} className="ml-auto" variant="outline" size="sm">
             <ToggleGroupItem value="month">Month</ToggleGroupItem>
@@ -202,7 +202,7 @@ function CreateEventDialog({ at, onClose, courses }: { at: Date | null; onClose:
         </DialogHeader>
         <form className="grid gap-4" onSubmit={async (e) => {
           e.preventDefault();
-          if (!title.trim()) return toast.error("Title is required");
+          if (!title.trim()) { toast.error("Title is required"); return; }
           await create.mutateAsync({ title, date: fromLocalInput(date), courseId: courseId === "none" ? null : courseId, description: description || undefined });
           toast.success("Event added to calendar");
           onClose();
